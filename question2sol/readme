@@ -1,0 +1,27 @@
+Explanation on how to make the module reusable:
+
+Module Structure 
+
+.
+├── main.tf
+├── variables.tf
+├── outputs.tf
+└── modules
+    └── web_server
+        ├── main.tf
+        ├── variables.tf
+        └── outputs.tf
+
+
+
+Usage of module in root configuration: 
+
+module "web_server" {
+  source           = "./modules/web_server"
+  vpc_cidr         = var.vpc_cidr
+  subnet_cidr      = var.subnet_cidr
+  availability_zone = var.availability_zone
+  ami_id           = var.ami_id
+  instance_type    = var.instance_type
+  volume_size      = var.volume_size
+}

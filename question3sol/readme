@@ -1,0 +1,18 @@
+Running the script
+
+Install Boto3:
+pip install boto3
+
+
+Run the Script:
+python script.py --instance-id i-123456789 --sns-topic arn:aws:sns:us-east-1:123456789012:Devops-Alerts
+
+
+On IAM
+
+IAM Permissions Required
+Ensure that the AWS credentials used have the necessary permissions to perform the following actions:
+
+ec2:RebootInstances
+sns:Publish
+You can set up these permissions using an IAM policy attached to the IAM user or role

@@ -1,0 +1,45 @@
+Explanation for the process of running the script. 
+
+This script will:
+
+Install the web server package.
+Create a virtual host configuration file.
+Ensure the web server starts at boot.
+Ensure the web server is running continuously.
+
+
+For this file vhost.conf.j2 ----> for nginx
+
+Replace the placeholders in the playbook:
+
+web_server: Set to apache or nginx.
+vhost_name: The name of your virtual host file.
+server_name: The domain name for the virtual host.
+document_root: The document root directory.
+
+Instructions to Run
+
+Install Ansible and Dependencies:
+sudo apt update
+sudo apt install ansible python3-pip
+pip3 install jinja2
+
+
+Prepare Inventory File (hosts):
+[webservers]
+your_server_ip_or_hostname ansible_user=your_user
+
+Run the Playbook:
+ansible-playbook -i hosts webserver.yml -e "web_server=nginx vhost_name=mysite server_name=example.com document_root=/var/www/html"
+
+
+
+For running and building the docker container. 
+docker build -t ansible-webserver .
+docker run -it ansible-webserver
+
+
+
+
+
+
